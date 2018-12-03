@@ -4,7 +4,8 @@ const route = require("./routes/routes");
 
 app.set("view engine", "ejs");
 
-app.use("/", route);
+app.use("/auth", route);
+
 const port = process.env.PORT || 3000;
 app.set("port", port);
 
