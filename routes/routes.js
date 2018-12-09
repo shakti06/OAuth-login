@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
 const controller = require("../controller/controller");
 
@@ -15,8 +16,14 @@ router.get("/logout", (req, res) => {
   controller.logout(req, res);
 });
 
-router.get("/google", (req, res) => {
-  controller.google(req, res);
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile"]
+  })
+);
+router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
+  controller.redirect(req, res);
 });
 
 module.exports = router;

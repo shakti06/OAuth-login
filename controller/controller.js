@@ -1,3 +1,5 @@
+//const services = require("../services/services");
+
 function Controller() {
   return {
     index: (req, res) => {
@@ -11,8 +13,9 @@ function Controller() {
     logout: (req, res) => {
       res.send("logging out");
     },
-    google: (req, res) => {
-      res.send("goggle");
+    //google: services.authenticate()
+    redirect: (req, res) => {
+      res.send(req.user);
     }
   };
 }
